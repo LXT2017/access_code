@@ -1,172 +1,84 @@
 <template>
-<div>
-  <!-- 顶部蓝色背景 -->
-  <div class="topBack"></div>
+  <div class="body">
+    <div class="top">请输入相应的学生信息</div>
 
-<!-- 中间的二维码 -->
-  <div class="card">
-    <div class="date">
-      <div>{{dateFormat(newDate)}}</div>
-      <div>{{timeFormat(newDate)}}</div>
+
+    <div class="middle">
+    <div class="info"> 学院：</div>
+    <input class="input" v-model="college">
+    <div class="info"> 学号：</div>
+    <input class="input" v-model="number">
+    <div class="info"> 姓名：</div>
+    <input class="input" v-model="name">
     </div>
-    <div class="topinfo">
-      <span>信息学院</span>
-      <span class="xuehao">xxxxxxxx</span>
-    </div>
-    <div class="imageinfo">
-      <img class="image" src="../assets/qr.jpg" alt="qr">
-    </div>
-    <div class="middleinfo">
-      <span class="middleinfo1">xxx</span>
-      <span class="middleinfo1" style="color: blue">刷新</span>
+    <div class="btn" @click="btn">
+      提交
     </div>
   </div>
-
-  <!-- 底部信息 -->
-    <div class="bottleinfo">
-    <div>2021-07-05 至 2021-09-30</div>
-    <div>
-      <span class="bottletext">通行码类型： </span>
-      <span>普通通行码</span>
-    </div>
-
-    <div>
-      <span class="bottletext">剩余次数： </span>
-      <span>200</span>
-    </div>
-  
-
-    <!-- <div>
-      <span class="bottletext">第一次刷码时间： </span>
-      <span>2021-03-21 20:49:33</span>
-    </div> -->
-  </div>
-
-  <div class="lastinfo">
-    <span class="lasttext">通行记录</span>
-  </div>
-</div>
 </template>
 
 <script>
 export default {
-      data() {
-        return {
-          // 当前时间
-          newDate: new Date()
-        }
-      },
-      mounted() {
-        //使用定时器每秒向div写入当前时间
-        let that = this
-        this.timer = setInterval(function () {
-          that.newDate = new Date().toLocaleString()
-        })
-      },
-
-      // 分别是日期和时间
-      methods: {
-      dateFormat () {
-          var date = new Date()
-          var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
-          var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
-          return month + '月' + day + '日 '
-        },
-        timeFormat () {
-          var date = new Date()
-          var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
-          var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
-          var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
-          return hours + ':' + minutes + ':' + seconds
-        }
-
-             // 时间格式化
-      // dateFormat () {
-      //     var date = new Date()
-      //     // var year = date.getFullYear()
-      //     var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
-      //     var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
-      //     var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
-      //     var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
-      //     var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
-      //     // let week = date.getDay() 
-      //     // let weekArr = [ '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ]
-      //     // 拼接 时间格式处理
-      //     return month + '月' + day + '日 ' + '\n' + hours + ':' + minutes + ':' + seconds
-      //   }
+  data() {
+    return {
+      college:'',
+      number:'',
+      name: ''
+    }
+  },
+  methods:{
+    btn(){
+      if(this.number==''||this.college==''||this.name==''){
+        alert("请填写正确的信息");
+        return;
       }
+      localStorage.setItem("college",this.college);
+      localStorage.setItem("number",this.number);
+      localStorage.setItem("name",this.name);
+      this.$router.push("/info")
+    }
+  }
 }
 </script>
 
 <style>
-body {
-  padding: 0;
-  margin: 0;
+.body{
+  background: url("../assets/bac.jpg");
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-size: 100% 100%;
+  opacity: 75%;
 }
-.topBack{
-  height: 200px;
-  background-color: #3B70E4;
-}
-.card{
-  margin: 0 6%;
-  position: relative;
-  top: 50px;
-  opacity: 0.95;
-  background-color: #F6F6F6;
-  /* height: 510px; */
-  width: 88%;
-  border-radius: 10px ;
-  padding-bottom: 15px;
-  top: -150px;
-}
-.date{
-  position: relative;
-  font-size: 42px;
-  font-weight: 550;
-  /* left: 25%; */
+.top{
+  color: red;
+  font-size: 25px;
+  margin: 10px;
   text-align: center;
 }
-.topinfo{
-  font-size: 17px;
-  font-weight: 400;
-  padding: 5px 12px;
+.info{
+  color: red;
+  font-size: 25px;
+  margin: 10px;
 }
-.xuehao{
-  position: relative;
-  float: right;
-}
-.imageinfo{
-  position: relative;
-  /* margin: 10px 14px; */
+.middle{
   text-align: center;
-}
-.image{
   position: relative;
-  height: 78%;
-  /* width: 320px; */
-  width: 78%;
+  margin: 20px;
 }
-.middleinfo{
-  position: relative;
+.input{
+  font-size: 25px;
+  width: 100%;
+  height: 30px;
+  border: 0;
+  border-radius: 5px;
+}
+.btn{
   text-align: center;
-}
- .middleinfo1{
-  padding: 5px;
-}
-
-
-.bottleinfo{
-  margin-top: -140px;
-  margin-left: 25px;
-}
-.bottletext{
-  color: #A9A9A9;
-}
-.lastinfo{
-  text-align: center;
-  margin-top: 50px;
-}
-.lasttext{
-  color: #1972D6;
+  font-size: 30px;
+  background-color: red;
+  opacity: 90%;
+  margin: 5px 20px;
+  border-radius: 6px;
 }
 </style>

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import Me from '../views/me.vue'
+import Info from '../views/info.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -21,6 +22,20 @@ const routes = [{
         component: () =>
             import ( /* webpackChunkName: "about" */ '../views/About.vue')
     },
+    {
+        path: '/me',
+        component: Me,
+        meta: {
+            title: '学生通行码'
+        }
+    },
+    {
+        path: '/info',
+        component: Info,
+        meta: {
+            title: '学生通行码'
+        }
+    }
 ]
 
 const router = new VueRouter({
