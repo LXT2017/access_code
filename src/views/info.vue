@@ -1,7 +1,8 @@
 <template>
 <div>
   <!-- 顶部蓝色背景 -->
-  <div class="topBack"></div>
+  <div v-if="id=='0'" class="topBackUnderGraduate"></div>
+  <div v-else class="topBackGraduate"></div>
 
 <!-- 中间的二维码 -->
   <div class="card">
@@ -14,7 +15,8 @@
       <span class="xuehao">{{number}}</span>
     </div>
     <div class="imageinfo">
-      <img class="image" src="../assets/qr.jpg" alt="qr">
+      <img v-if="id=='0'" class="image" src="../assets/qr.jpg" alt="qr">
+      <img v-else class="image" src="../assets/qr1.jpg" alt="qr">
     </div>
     <div class="middleinfo">
       <span class="middleinfo1" >{{name}}</span>
@@ -56,17 +58,20 @@ export default {
           newDate: new Date(),
           name: '',
           college:'',
-          number:''
+          number:'',
+          id:''
         }
       },
       created(){
         var college = localStorage.getItem("college")
         var number = localStorage.getItem("number")
         var name = localStorage.getItem("name")
-        if(college!=null||number!=null||name!=null){
+        var id = localStorage.getItem("id")
+        if(college!=null||number!=null||name!=null||id!=null){
           this.college=college
           this.number=number
           this.name=name
+          this.id=id
         }
       },
       mounted() {
@@ -116,9 +121,13 @@ body {
   padding: 0;
   margin: 0;
 }
-.topBack{
+.topBackUnderGraduate{
   height: 200px;
   background-color: #3B70E4;
+}
+.topBackGraduate{
+  height: 200px;
+  background-color: #FF5505;
 }
 .card{
   margin: 0 6%;
