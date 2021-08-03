@@ -3,11 +3,13 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Me from '../views/me.vue'
 import Info from '../views/info.vue'
+import Fan from '../views/fan.vue'
+
 Vue.use(VueRouter)
+
 
 const routes = [{
         path: '/',
-        name: 'Home',
         component: Home,
         meta: {
             title: '学生通行码'
@@ -34,6 +36,13 @@ const routes = [{
         component: Info,
         meta: {
             title: '学生通行码'
+        }
+    },
+    {
+        path: '/fan',
+        component: Fan,
+        meta: {
+            title: '通行码'
         }
     }
 ]

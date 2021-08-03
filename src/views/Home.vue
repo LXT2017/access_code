@@ -1,5 +1,6 @@
 <template>
-  <div class="body">
+<div>
+  <div class="body1">
     <div class="top">请输入相应的学生信息</div>
 
     
@@ -19,6 +20,7 @@
       提交
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -56,14 +58,19 @@ export default {
 }
 </script>
 
-<style>
-.body{
+<style scoped>
+body {
+  padding: 0;
+  margin: 0;
+}
+.body1{
   background: url("../assets/bac.jpg");
   width: 100%;
   height: 100%;
   position: fixed;
   background-size: 100% 100%;
-  opacity: 75%;
+  z-index: 0;
+  opacity: 0.95;
 }
 .top{
   color: red;
@@ -92,8 +99,9 @@ export default {
   text-align: center;
   font-size: 30px;
   background-color: red;
-  opacity: 90%;
+  opacity: 0.9;
   margin: 5px 20px;
   border-radius: 6px;
+  z-index: 9;
 }
 </style>

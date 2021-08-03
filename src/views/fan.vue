@@ -2,49 +2,38 @@
 <div>
   <!-- 个人信息 -->
   <!-- 顶部蓝色背景 -->
-  <div class="topBack"></div>
+  <div class="topBack">智慧浙理校园通行码</div>
+ <div class="topinfo">
+      <span>职工号</span>
+      <span class="topinfospan">xxxxxx</span>
+      <span class="topinfospan">姓名</span>
+      <span class="topinfospan">xx</span>
+</div>
+<div class="topinfo">
+      <span>学院部</span>
+      <span class="topinfospan">体育教研部  (军训工作部)</span>
+</div>
+<div >
+      <div class="date">{{dateFormat(newDate)}}</div>
+      <div class="time">{{timeFormat(newDate)}}</div>
+    </div>
+
+<div class="topinfo"> 
+  <span style="padding-left: 5%">有效期限</span>
+  <span class="topinfospan">2021-07-03  —  2021-09-05</span>
+</div>
 
 <!-- 中间的二维码 -->
-  <div class="card">
-    <div class="date">
-      <div>{{dateFormat(newDate)}}</div>
-      <div>{{timeFormat(newDate)}}</div>
-    </div>
-    <div class="topinfo">
-      <span>xx学院</span>
-      <span class="xuehao">xxxxxxxx</span>
-    </div>
+
     <div class="imageinfo">
-      <img class="image" src="../assets/qr.jpg" alt="qr">
+      <img class="image" src="../assets/qr2.jpg" alt="qr">
     </div>
-    <div class="middleinfo">
-      <span class="middleinfo1">xxx</span>
-      <span class="middleinfo1" style="color: blue">刷新</span>
-    </div>
-  </div>
 
   <!-- 底部信息 -->
     <div class="bottleinfo">
-    <div>2021-07-05 至 2021-09-30</div>
-    <div>
-      <span class="bottletext">通行码类型： </span>
-      <span>普通通行码</span>
-    </div>
-
-    <div>
-      <span class="bottletext">剩余次数： </span>
-      <span>200</span>
-    </div>
-  
-
-    <!-- <div>
-      <span class="bottletext">第一次刷码时间： </span>
-      <span>2021-03-21 20:49:33</span>
-    </div> -->
-  </div>
-
-  <div class="lastinfo">
-    <span class="lasttext">通行记录</span>
+    <div>二维码定期更新，请勿截图</div>
+    <div>温馨提醒：提前打开 快速通行</div>
+    <div>信息化办公室 Copyright@2021</div>
   </div>
 </div>
 </template>
@@ -99,74 +88,63 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
   padding: 0;
   margin: 0;
 }
 .topBack{
-  height: 200px;
-  background-color: #3B70E4;
-}
-.card{
-  margin: 0 6%;
   position: relative;
-  opacity: 0.99;
-  background-color: #FFFFFF;
-  /* height: 510px; */
-  width: 88%;
-  border-radius: 10px ;
-  padding-bottom: 15px;
-  top: -150px;
-}
-.date{
-  position: relative;
-  font-size: 42px;
-  font-weight: 550;
-  /* left: 25%; */
+  height: 45px;
+  background-color: #3777B5;
+  color: #F8F3EB;
+  margin: 8px;
+  font-size: 22px;
+  font-weight: bold;
   text-align: center;
+  line-height: 45px;
 }
+
 .topinfo{
   font-size: 17px;
   font-weight: 400;
-  padding: 5px 12px;
+  padding: 2px 11px;
 }
-.xuehao{
+.topinfospan{
+  font-size: 18px;
+  font-weight:540;
+  margin-left: 25px;
+}
+.date{
   position: relative;
-  float: right;
+  font-size: 28px;
+  font-weight: 550;
+  text-align: center;
+  margin-top: 10px;
+}
+.time{
+  position: relative;
+  font-size: 44px;
+  font-weight: 550;
+  text-align: center;
+  margin-top: 5px;
 }
 .imageinfo{
   position: relative;
   /* margin: 10px 14px; */
   text-align: center;
+  margin: 7% 7% 5% 7%;
 }
 .image{
   position: relative;
-  height: 78%;
-  /* width: 320px; */
-  width: 78%;
+  height: 76%;
+  width: 76%;
 }
-.middleinfo{
-  position: relative;
-  text-align: center;
-}
- .middleinfo1{
-  padding: 5px;
-}
-
 
 .bottleinfo{
-  margin-top: -140px;
-  margin-left: 25px;
-}
-.bottletext{
-  color: #A9A9A9;
-}
-.lastinfo{
+  margin: 4px;
   text-align: center;
-  margin-top: 50px;
-}
-.lasttext{
-  color: #1972D6;
+  line-height: 200%;
+  font-size: 18px;
 }
 </style>
