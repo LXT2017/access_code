@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Me from '../views/me.vue'
 import Info from '../views/info.vue'
 import Fan from '../views/fan.vue'
-
+import History from '../views/history.vue'
 Vue.use(VueRouter)
 
 
@@ -43,6 +43,13 @@ const routes = [{
         component: Fan,
         meta: {
             title: '通行码'
+        }
+    },
+    {
+        path: '/history',
+        component: History,
+        meta: {
+            title: '学生通行码'
         }
     }
 ]

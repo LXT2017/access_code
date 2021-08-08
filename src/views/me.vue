@@ -11,15 +11,15 @@
       <div>{{timeFormat(newDate)}}</div>
     </div>
     <div class="topinfo">
-      <span>xx学院</span>
-      <span class="xuehao">xxxxxxxx</span>
+      <span>信息学院</span>
+      <span class="xuehao">xxxxxxxxxxx</span>
     </div>
     <div class="imageinfo">
-      <img class="image" src="../assets/qr.jpg" alt="qr">
+      <img class="image" :src = "imgsrc" alt="qr">
     </div>
     <div class="middleinfo">
       <span class="middleinfo1">xxx</span>
-      <span class="middleinfo1" style="color: blue">刷新</span>
+      <span class="middleinfo1" style="color: blue" @click="fresh">刷新</span>
     </div>
   </div>
 
@@ -44,18 +44,32 @@
   </div>
 
   <div class="lastinfo">
-    <span class="lasttext">通行记录</span>
+    <span class="lasttext" @click="history">通行记录</span>
   </div>
 </div>
 </template>
 
 <script>
+// import bqr1 from require('../assets/bqr1.jpg');
+// import bqr2 from "require(../assets/bqr2.jpg)";
+// import bqr3 from "require(../assets/bqr3.jpg)";
+// import bqr4 from "require(../assets/bqr4.jpg)";
+
 export default {
       data() {
         return {
           // 当前时间
-          newDate: new Date()
+          newDate: new Date(),
+          imgsrclist:[require('../assets/bqr1.jpg'),
+          require('../assets/bqr2.jpg'),
+          require('../assets/bqr3.jpg'),
+          require('../assets/bqr4.jpg'),
+          require('../assets/bqr5.jpg')]
         }
+      },
+      created(){
+          var i = Math.floor(Math.random()*5);
+          this.imgsrc = this.imgsrclist[i];
       },
       mounted() {
         //使用定时器每秒向div写入当前时间
@@ -69,7 +83,7 @@ export default {
       methods: {
       dateFormat () {
           var date = new Date()
-          var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
+          var month = date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1
           var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
           return month + '月' + day + '日 '
         },
@@ -79,6 +93,14 @@ export default {
           var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
           var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
           return hours + ':' + minutes + ':' + seconds
+        },
+        fresh(){
+            var i = Math.floor(Math.random()*5);
+            console.log(i)
+            this.imgsrc = this.imgsrclist[i];
+        },
+        history(){
+          this.$router.push("/history")
         }
 
              // 时间格式化

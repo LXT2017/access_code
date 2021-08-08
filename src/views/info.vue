@@ -15,12 +15,13 @@
       <span class="xuehao">{{number}}</span>
     </div>
     <div class="imageinfo">
-      <img v-if="id=='0'" class="image" src="../assets/qr.jpg" alt="qr">
-      <img v-else class="image" src="../assets/qr1.jpg" alt="qr">
+      <!-- <img v-if="id=='0'" class="image" src="../assets/qr.jpg" alt="qr">
+      <img v-else class="image" src="../assets/qr1.jpg" alt="qr"> -->
+      <img class="image" :src="imgsrc" alt="qr">
     </div>
     <div class="middleinfo">
       <span class="middleinfo1" >{{name}}</span>
-      <span class="middleinfo1" style="color: blue">刷新</span>
+      <span class="middleinfo1" style="color: blue" @click="fresh">刷新</span>
     </div>
   </div>
 
@@ -45,7 +46,7 @@
   </div>
 
   <div class="lastinfo">
-    <span class="lasttext">通行记录</span>
+    <span class="lasttext" @click="history">通行记录</span>
   </div>
 </div>
 </template>
@@ -59,7 +60,17 @@ export default {
           name: '',
           college:'',
           number:'',
-          id:''
+          id:'',
+          imgsrcylist:[require('../assets/yqr1.jpg'),
+          require('../assets/yqr2.jpg'),
+          require('../assets/yqr3.jpg'),
+          require('../assets/yqr4.jpg'),
+          require('../assets/yqr5.jpg')],
+          imgsrcblist:[require('../assets/bqr1.jpg'),
+          require('../assets/bqr2.jpg'),
+          require('../assets/bqr3.jpg'),
+          require('../assets/bqr4.jpg'),
+          require('../assets/bqr5.jpg')]
         }
       },
       created(){
@@ -73,6 +84,7 @@ export default {
           this.name=name
           this.id=id
         }
+        this.fresh();
       },
       mounted() {
         //使用定时器每秒向div写入当前时间
@@ -86,7 +98,7 @@ export default {
       methods: {
       dateFormat () {
           var date = new Date()
-          var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
+          var month = date.getMonth() + 1 < 10 ?  (date.getMonth() + 1) : date.getMonth() + 1
           var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
           return month + '月' + day + '日 '
         },
@@ -96,6 +108,19 @@ export default {
           var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
           var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
           return hours + ':' + minutes + ':' + seconds
+        },
+        fresh(){
+          var i = Math.floor(Math.random()*5);
+          var src;
+          if(this.id == 0){
+            src = this.imgsrcblist[i]
+          }else{
+            src = this.imgsrcylist[i]
+          }
+            this.imgsrc = src;
+        },
+        history(){
+          this.$router.push("/history")
         }
 
              // 时间格式化

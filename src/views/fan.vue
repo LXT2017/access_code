@@ -5,9 +5,9 @@
   <div class="topBack">智慧浙理校园通行码</div>
  <div class="topinfo">
       <span>职工号</span>
-      <span class="topinfospan">xxxxxx</span>
+      <span class="topinfospan">19970284</span>
       <span class="topinfospan">姓名</span>
-      <span class="topinfospan">xx</span>
+      <span class="topinfospan">樊晓</span>
 </div>
 <div class="topinfo">
       <span>学院部</span>
