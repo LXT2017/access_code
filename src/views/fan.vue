@@ -5,9 +5,9 @@
   <div class="topBack">智慧浙理校园通行码</div>
  <div class="topinfo">
       <span>职工号</span>
-      <span class="topinfospan">19970284</span>
+      <span class="topinfospan">xxxxx</span>
       <span class="topinfospan">姓名</span>
-      <span class="topinfospan">樊晓</span>
+      <span class="topinfospan">xxxx</span>
 </div>
 <div class="topinfo">
       <span>学院部</span>
@@ -58,7 +58,7 @@ export default {
       methods: {
       dateFormat () {
           var date = new Date()
-          var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
+          var month = date.getMonth() + 1 < 10 ?  (date.getMonth() + 1) : date.getMonth() + 1
           var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
           return month + '月' + day + '日 '
         },
